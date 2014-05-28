@@ -3,7 +3,7 @@
 Plugin Name: Uploadcare
 Plugin URI: http://github.com/uploadcare/uploadcare-wordpress
 Description: Implements a way to use Uploadcare inside you Wordpress blog.
-Version: 2.2.0
+Version: 2.2.0-woo
 Author: Uploadcare
 Author URI: https://uploadcare.com/
 License: GPL2
@@ -20,6 +20,7 @@ require_once UPLOADCARE_PLUGIN_PATH . 'inc/utils.php';
 require_once UPLOADCARE_PLUGIN_PATH . 'inc/filters.php';
 require_once UPLOADCARE_PLUGIN_PATH . 'inc/actions.php';
 require_once UPLOADCARE_PLUGIN_PATH . 'inc/shortcodes.php';
+require_once UPLOADCARE_PLUGIN_PATH . 'inc/woocommerce.php';
 
 require_once UPLOADCARE_PLUGIN_PATH . 'uploadcare-php/src/Uploadcare/Api.php';
 require_once UPLOADCARE_PLUGIN_PATH . 'uploadcare-php/src/Uploadcare/File.php';

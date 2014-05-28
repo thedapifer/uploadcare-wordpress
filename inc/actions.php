@@ -28,6 +28,12 @@ function uploadcare_plugin_init() {
         'uploadcare-shortcodes',
         UPLOADCARE_PLUGIN_URL . 'js/shortcodes.js',
         array('uploadcare-config'));
+
+    wp_register_script(
+        'uploadcare-woocommerce',
+        UPLOADCARE_PLUGIN_URL . 'js/woocommerce.js',
+        array('uploadcare-config'));
+
     wp_register_style(
         'uploadcare-style',
         UPLOADCARE_PLUGIN_URL . 'css/uploadcare.css'

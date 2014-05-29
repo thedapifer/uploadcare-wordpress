@@ -24,9 +24,14 @@ function uploadcare_woo_checkout_field($checkout) {
         array(
             'type'          => 'text',
             'class'         => array('uploadcare-woo-checkout'),
-            'label'         => __('Fill in this field'),
+            // 'label'         => __('Fill in this field'),
             // 'placeholder'   => __('Enter something'),
-            'custom_attributes' => array('role' => 'uploadcare-uploader'),
+            'custom_attributes' => array(
+                'role' => 'uploadcare-uploader',
+                'data-multiple' => 'true',
+                'data-clearable' => 'true',
+                'data-autostore' => 'true',
+            ),
         ),
         $checkout->get_value('uploadcare_checkout_field')
     );
@@ -58,9 +63,21 @@ function uploadcare_checkout_field_update_order_meta($order_id) {
  * Display field value on the order edit page
  */
 function uploadcare_checkout_field_display_admin_order_meta($order) {
-    $files = get_post_meta($order->id, 'uploadcare-woo-order-files', true);
-    if(!empty($files)) {
-        echo '<p><strong>'.__('Attached files').':</strong> ' . $files . '</p>';
+    $data = get_post_meta($order->id, 'uploadcare-woo-order-files', true);
+    if(!empty($data)) {
+        $api = uploadcare_api();
+        $group = $api->getGroup($data);
+        echo '<p><strong>'.__('Attached files').':</strong><br />';
+        foreach($group->getFiles() as $file) {
+            echo '<a href="' . $file->getUrl() . '">';
+            if($file->data['is_image']) {
+                echo $file->preview(300, 300)->getImgTag();
+            } else {
+               echo $file->data['original_filename'];
+            }
+            echo '</a><br />';
+        }
+        echo '</p>';
     }
 }
 

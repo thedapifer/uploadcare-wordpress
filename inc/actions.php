@@ -180,10 +180,10 @@ function uploadcare_attach_user_image($file, $post_id) {
     $user_image = array(
         'post_author'    => $currentuser,
         'post_date'      => date('Y-m-d H:i:s'),
-        'post_type'      => 'uc_user_image',
+        'post_type'      => 'update',
         'post_title'     => $title,
         'post_parent'    => $post_id,
-        'post_status'    => 'private',
+        'post_status'    => 'publish',
         'post_mime_type' => $file->data['mime_type'],
     );
 
